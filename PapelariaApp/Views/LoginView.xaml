@@ -1,0 +1,21 @@
+﻿<Window x:Class="PapelariaApp.Views.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login"
+        Height="220" Width="320"
+        WindowStartupLocation="CenterScreen"
+        Background="#3A7CA5">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Usuário" Margin="0,0,0,4" FontWeight="bold"/>
+            <TextBox x:Name="txtUsuario" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Senha" Margin="0,0,0,4" FontWeight="bold"/>
+            <PasswordBox x:Name="txtSenha" Margin="0,0,0,10"/>
+            <Button Content="Login"
+                    Height="30"
+                    Click="Entrar_Click"
+                    Background="LightBlue"/>
+        </StackPanel>
+    </Grid>
+</Window>
