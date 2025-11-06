@@ -1,0 +1,59 @@
+﻿<Window x:Class="PapelariaApp.Views.VendasView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Vendas"
+        Height="500" Width="600"
+        WindowStartupLocation="CenterScreen"
+        Background="#3A7CA5">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10" VerticalAlignment="Top">
+            <StackPanel Margin="0,0,10,0">
+                <Label Content="Produto" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <ComboBox Width="150"
+                          ItemsSource="{Binding Produtos}"
+                          DisplayMemberPath="Nome"
+                          SelectedItem="{Binding ProdutoSelecionado}"
+                          Height="25"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,10,0">
+                <Label Content="Quantidade" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <TextBox Width="80" Height="25" Text="{Binding Quantidade}" ToolTip="Qtd"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,10,0">
+                <Label Content="Preço" FontWeight="Bold" HorizontalAlignment="Left"/>
+                <TextBox Width="100" Height="25" Text="{Binding PrecoUnitario}" ToolTip="Preço"/>
+            </StackPanel>
+
+            <Button Content="Registrar Venda"
+                    Click="RegistrarVenda_Click"
+                    Background="LightBlue"
+                    FontWeight="Bold"
+                    Width="120"
+                    Height="30"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Vendas}" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Produto" Binding="{Binding Itens[0].Produto.Nome}"/>
+                <DataGridTextColumn Header="Quantidade" Binding="{Binding Itens[0].Quantidade}"/>
+                <DataGridTextColumn Header="Preço Unitário" Binding="{Binding Itens[0].PrecoUnitario}"/>
+                <DataGridTextColumn Header="Total" Binding="{Binding ValorTotal}"/>
+                <DataGridTemplateColumn Header="Ações">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Excluir" Click="ExcluirVenda_Click"
+                                    Background="#f66" Foreground="White" Padding="5,2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
